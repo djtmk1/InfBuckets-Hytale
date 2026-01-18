@@ -34,7 +34,6 @@ public class BucketListener {
 
         if (player == null || !isInfiniteBucket(heldItem)) return;
 
-        // Strictly water permission check
         if (!player.hasPermission("infbuckets.use.water")) {
             player.sendMessage(Message.raw("You don't have permission to use infinite water buckets!").color("#FF5555"));
             event.setCancelled(true);
@@ -55,12 +54,11 @@ public class BucketListener {
         try {
             BsonDocument metadata = heldItem.getMetadata();
 
-            // FIXED: Using the Base ID + State format to resolve the "?" icon
-            // Format: BaseID#StateName
-            String itemId = "Container_Bucket#Filled_Water";
+            // CORRECTED: State-specific ID format to prevent the "?" icon
+            String itemId = "hytale:container_bucket[state=filled_water]";
             ItemStack restoredBucket = new ItemStack(itemId, 1, metadata);
 
-            short bucketSlot = findBucketSlot(player, restoredBucket);
+            short bucketSlot = findBucketSlot(player, heldItem);
             if (bucketSlot >= 0) {
                 player.getInventory().getCombinedHotbarFirst().setItemStackForSlot(bucketSlot, restoredBucket);
             }
@@ -70,8 +68,8 @@ public class BucketListener {
     }
 
     private boolean isBucket(ItemStack item) {
-        String itemId = item.getItemId();
-        return itemId.contains("Container_Bucket") || itemId.contains("bucket");
+        String itemId = item.getItemId().toLowerCase();
+        return itemId.contains("container_bucket") || itemId.contains("bucket");
     }
 
     private boolean isInfiniteBucket(ItemStack item) {
@@ -86,7 +84,7 @@ public class BucketListener {
         for (short i = 0; i < 40; i++) {
             try {
                 ItemStack slotItem = inventory.getItemStack(i);
-                if (slotItem != null && slotItem.getItemId().equals(targetItem.getItemId())) {
+                if (slotItem != null && slotItem.getItemId().equalsIgnoreCase(targetItem.getItemId())) {
                     BsonDocument slotMeta = slotItem.getMetadata();
                     if (slotMeta != null && slotMeta.containsKey("infinite")) return i;
                 }
