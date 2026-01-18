@@ -37,8 +37,8 @@ public class InfBucketsPlugin extends JavaPlugin {
         getLogger().atInfo().log("Registered bucket event listener");
 
         getLogger().atInfo().log("InfBuckets plugin loaded successfully!");
-        getLogger().atInfo().log("Commands: /infb give <player> <water|lava>");
-        getLogger().atInfo().log("Permissions: infbuckets.give, infbuckets.use.water, infbuckets.use.lava");
+        getLogger().atInfo().log("Commands: /infb give <player> <water>");
+        getLogger().atInfo().log("Permissions: infbuckets.give, infbuckets.use.water");
     }
 
     public static InfBucketsPlugin getInstance() {

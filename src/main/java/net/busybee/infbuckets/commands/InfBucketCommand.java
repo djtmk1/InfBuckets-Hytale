@@ -21,108 +21,64 @@ public class InfBucketCommand extends AbstractPlayerCommand {
     private final InfBucketsPlugin plugin;
 
     public InfBucketCommand(InfBucketsPlugin plugin) {
-        super("infb", "Infinite bucket command");
+        super("infb", "Infinite water bucket command");
         this.plugin = plugin;
-
-        // Require permission
         requirePermission("infbuckets.give");
-
-        // Add subcommand for 'give'
         addSubCommand(new GiveSubCommand());
     }
 
     @Override
-    protected void execute(CommandContext context, Store<EntityStore> store, Ref<EntityStore> playerRef,
-                          PlayerRef playerRefComponent, World world) {
-        // Show help message if no subcommand
-        context.sendMessage(
-            Message.raw("InfBuckets Commands:\n").color("#FFD700")
-                .insert(Message.raw("/infb give <player> <water|lava> ").color("#FFFF55"))
-                .insert(Message.raw("- Give infinite bucket to player").color("#AAAAAA"))
-        );
+    protected void execute(CommandContext context, Store<EntityStore> store, Ref<EntityStore> playerRef, PlayerRef playerRefComponent, World world) {
+        context.sendMessage(Message.raw("InfBuckets Commands:\n").color("#FFD700")
+                .insert(Message.raw("/infb give <player> water ").color("#FFFF55"))
+                .insert(Message.raw("- Gives an infinite water bucket").color("#AAAAAA")));
     }
 
     private class GiveSubCommand extends AbstractPlayerCommand {
         private final RequiredArg<String> targetPlayerArg;
-        private final RequiredArg<String> bucketTypeArg;
 
         public GiveSubCommand() {
-            super("give", "Give an infinite bucket to a player");
-            requirePermission("infbuckets.give");
-
+            super("give", "Give an infinite water bucket");
             this.targetPlayerArg = withRequiredArg("player", "Target player name", ArgTypes.STRING);
-            this.bucketTypeArg = withRequiredArg("bucket_type", "Bucket type (water or lava)", ArgTypes.STRING);
+            // Removed the bucket_type argument as we are focusing only on water
         }
 
         @Override
-        protected void execute(CommandContext context, Store<EntityStore> store, Ref<EntityStore> senderRef,
-                              PlayerRef senderPlayerRef, World world) {
+        protected void execute(CommandContext context, Store<EntityStore> store, Ref<EntityStore> senderRef, PlayerRef senderPlayerRef, World world) {
             String targetPlayerName = context.get(targetPlayerArg);
-            String bucketType = context.get(bucketTypeArg).toLowerCase();
-
-            // Validate bucket type
-            if (!bucketType.equals("water") && !bucketType.equals("lava")) {
-                context.sendMessage(
-                    Message.raw("Invalid bucket type! Use 'water' or 'lava'.").color("#FF5555")
-                );
-                return;
-            }
-
-            // Find target player
             Player targetPlayer = findPlayerByName(store, targetPlayerName);
 
             if (targetPlayer == null) {
-                context.sendMessage(
-                    Message.raw("Player '" + targetPlayerName + "' not found!").color("#FF5555")
-                );
+                context.sendMessage(Message.raw("Player '" + targetPlayerName + "' not found!").color("#FF5555"));
                 return;
             }
 
-            // Create infinite bucket with metadata
             BsonDocument metadata = new BsonDocument();
             metadata.put("infinite", new BsonString("true"));
-            metadata.put("infbucket_type", new BsonString(bucketType));
+            metadata.put("infbucket_type", new BsonString("water"));
 
-            // Determine item ID based on bucket type
-            String itemId = bucketType.equals("water") ? "hytale:water_bucket_filled" : "hytale:lava_bucket_filled";
-
+            // FIXED: Using BaseID#State format to fix the "?" icon issue
+            String itemId = "Container_Bucket#Filled_Water";
             ItemStack infiniteBucket = new ItemStack(itemId, 1, metadata);
 
-            // Give bucket to player
             try {
                 targetPlayer.getInventory().getCombinedHotbarFirst().addItemStack(infiniteBucket);
-
-                context.sendMessage(
-                    Message.raw("Gave infinite " + bucketType + " bucket to " + targetPlayer.getDisplayName() + "!").color("#55FF55")
-                );
-
-                targetPlayer.sendMessage(
-                    Message.raw("You received an infinite " + bucketType + " bucket!").color("#55FF55")
-                );
-
-                plugin.getLogger().atInfo().log("Gave infinite " + bucketType + " bucket to " + targetPlayer.getDisplayName());
+                context.sendMessage(Message.raw("Gave infinite water bucket to " + targetPlayer.getDisplayName() + "!").color("#55FF55"));
             } catch (Exception e) {
-                context.sendMessage(
-                    Message.raw("Failed to give bucket: " + e.getMessage()).color("#FF5555")
-                );
-                plugin.getLogger().atSevere().withCause(e).log("Error giving infinite bucket");
+                context.sendMessage(Message.raw("Failed to give bucket: " + e.getMessage()).color("#FF5555"));
             }
         }
 
         private Player findPlayerByName(Store<EntityStore> store, String name) {
-            // Search through all entities to find player by display name
             Player[] foundPlayer = new Player[1];
-
             store.forEachChunk((chunk, buffer) -> {
                 for (int i = 0; i < chunk.size(); i++) {
                     Player player = chunk.getComponent(i, Player.getComponentType());
                     if (player != null && player.getDisplayName().equalsIgnoreCase(name)) {
                         foundPlayer[0] = player;
-                        return;
                     }
                 }
             });
-
             return foundPlayer[0];
         }
     }
