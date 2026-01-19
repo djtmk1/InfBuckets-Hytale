@@ -27,7 +27,7 @@ public class InfBucketCommand extends AbstractPlayerCommand {
     @Override
     protected void execute(CommandContext context, Store<EntityStore> store, Ref<EntityStore> playerRef,
                            PlayerRef playerRefComponent, World world) {
-        context.sendMessage(Message.raw("Usage: /infb give <player> <water>").color("#FFD700"));
+        context.sendMessage(Message.raw("Usage: /infb give <player> water").color("#FFD700"));
     }
 
     private class GiveSubCommand extends AbstractPlayerCommand {
@@ -49,21 +49,16 @@ public class InfBucketCommand extends AbstractPlayerCommand {
             Player targetPlayer = findPlayerByName(store, targetPlayerName);
             if (targetPlayer == null) return;
 
-            // Map the fluid type to the State keys - only water is confirmed to work
-            String stateName;
-            switch (type) {
-                case "water": stateName = "Filled_Water"; break;
-                // Add more types here as you discover valid state names in Hytale
-                default:
-                    context.sendMessage(Message.raw("Unknown bucket type: " + type).color("#FF5555"));
-                    return;
+            if (!type.equals("water")) {
+                context.sendMessage(Message.raw("Unknown bucket type: " + type + ". Only 'water' is supported.").color("#FF5555"));
+                return;
             }
+
+            String stateName = "Filled_Water";
 
             BsonDocument metadata = new BsonDocument();
             metadata.put("infinite", new BsonString("true"));
             metadata.put("infbucket_type", new BsonString(type));
-
-            // Use the base ID found in your screenshots
             String itemId = "Container_Bucket";
             ItemStack infiniteBucket = new ItemStack(itemId, 1, metadata).withState(stateName);
 

@@ -12,21 +12,17 @@ import org.bson.BsonDocument;
 public class BucketListener {
 
     private final InfBucketsPlugin plugin;
-
     public BucketListener(InfBucketsPlugin plugin) {
         this.plugin = plugin;
     }
 
     public void register() {
-        // We use Post because we want to refill the bucket AFTER the fluid is placed in the world
         plugin.getEventRegistry().register(UseBlockEvent.Post.class, this::onBlockUsePost);
     }
 
     private void onBlockUsePost(UseBlockEvent.Post event) {
         InteractionContext context = event.getContext();
         ItemStack heldItem = context.getHeldItem();
-
-        // Check for our custom metadata
         if (heldItem == null || !isInfiniteBucket(heldItem)) return;
 
         Ref<EntityStore> entityRef = context.getEntity();
@@ -36,20 +32,10 @@ public class BucketListener {
         try {
             BsonDocument metadata = heldItem.getMetadata();
             String bucketType = metadata.getString("infbucket_type").getValue();
-
-            // Map the fluid type back to the state name
-            String stateName;
-            switch (bucketType) {
-                case "water": stateName = "Filled_Water"; break;
-                // Add more types here as valid state names are discovered
-                default: stateName = "Filled_Water"; break;
-            }
-
-            // Re-create the item with the correct Base ID, metadata, and state
+            String stateName = "Filled_Water";
             String itemId = "Container_Bucket";
             ItemStack restoredBucket = new ItemStack(itemId, 1, metadata).withState(stateName);
 
-            // Re-apply the bucket to the slot to prevent it from turning into an empty version
             short bucketSlot = findBucketSlot(player);
             if (bucketSlot >= 0) {
                 player.getInventory().getCombinedHotbarFirst().setItemStackForSlot(bucketSlot, restoredBucket);
@@ -69,7 +55,6 @@ public class BucketListener {
         for (short i = 0; i < 40; i++) {
             try {
                 ItemStack slotItem = inventory.getItemStack(i);
-                // Search for the ID that the engine just switched to
                 if (slotItem != null && slotItem.getItemId().contains("Container_Bucket")) {
                     return i;
                 }
