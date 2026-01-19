@@ -1,7 +1,6 @@
 package net.busybee.infbuckets.listener;
 
 import com.hypixel.hytale.component.Ref;
-import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.entity.InteractionContext;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.event.events.ecs.UseBlockEvent;
@@ -19,74 +18,51 @@ public class BucketListener {
     }
 
     public void register() {
-        plugin.getEventRegistry().register(UseBlockEvent.Pre.class, this::onBlockUse);
+        // We use Post because we want to refill the bucket AFTER the fluid is placed in the world
         plugin.getEventRegistry().register(UseBlockEvent.Post.class, this::onBlockUsePost);
-    }
-
-    private void onBlockUse(UseBlockEvent.Pre event) {
-        InteractionContext context = event.getContext();
-        ItemStack heldItem = context.getHeldItem();
-
-        if (heldItem == null || !isBucket(heldItem)) return;
-
-        Ref<EntityStore> entityRef = context.getEntity();
-        Player player = entityRef.getStore().getComponent(entityRef, Player.getComponentType());
-
-        if (player == null || !isInfiniteBucket(heldItem)) return;
-
-        if (!player.hasPermission("infbuckets.use.water")) {
-            player.sendMessage(Message.raw("You don't have permission to use infinite water buckets!").color("#FF5555"));
-            event.setCancelled(true);
-        }
     }
 
     private void onBlockUsePost(UseBlockEvent.Post event) {
         InteractionContext context = event.getContext();
         ItemStack heldItem = context.getHeldItem();
 
+        // Check for our custom metadata
         if (heldItem == null || !isInfiniteBucket(heldItem)) return;
 
         Ref<EntityStore> entityRef = context.getEntity();
         Player player = entityRef.getStore().getComponent(entityRef, Player.getComponentType());
-
         if (player == null) return;
 
         try {
             BsonDocument metadata = heldItem.getMetadata();
 
-            // CORRECTED: State-specific ID format to prevent the "?" icon
-            String itemId = "hytale:container_bucket[state=filled_water]";
+            // Re-create the item with the correct Base ID and the original Metadata (state)
+            String itemId = "Container_Bucket";
             ItemStack restoredBucket = new ItemStack(itemId, 1, metadata);
 
-            short bucketSlot = findBucketSlot(player, heldItem);
+            // Re-apply the bucket to the slot to prevent it from turning into an empty version
+            short bucketSlot = findBucketSlot(player);
             if (bucketSlot >= 0) {
                 player.getInventory().getCombinedHotbarFirst().setItemStackForSlot(bucketSlot, restoredBucket);
             }
         } catch (Exception e) {
-            plugin.getLogger().atSevere().withCause(e).log("Error restoring infinite water bucket");
+            plugin.getLogger().atSevere().withCause(e).log("Error restoring infinite bucket");
         }
-    }
-
-    private boolean isBucket(ItemStack item) {
-        String itemId = item.getItemId().toLowerCase();
-        return itemId.contains("container_bucket") || itemId.contains("bucket");
     }
 
     private boolean isInfiniteBucket(ItemStack item) {
         BsonDocument metadata = item.getMetadata();
-        return metadata != null &&
-                metadata.containsKey("infinite") &&
-                metadata.getString("infinite").getValue().equals("true");
+        return metadata != null && metadata.containsKey("infinite");
     }
 
-    private short findBucketSlot(Player player, ItemStack targetItem) {
+    private short findBucketSlot(Player player) {
         var inventory = player.getInventory().getCombinedHotbarFirst();
         for (short i = 0; i < 40; i++) {
             try {
                 ItemStack slotItem = inventory.getItemStack(i);
-                if (slotItem != null && slotItem.getItemId().equalsIgnoreCase(targetItem.getItemId())) {
-                    BsonDocument slotMeta = slotItem.getMetadata();
-                    if (slotMeta != null && slotMeta.containsKey("infinite")) return i;
+                // Search for the ID that the engine just switched to
+                if (slotItem != null && slotItem.getItemId().contains("Container_Bucket")) {
+                    return i;
                 }
             } catch (Exception e) {}
         }
