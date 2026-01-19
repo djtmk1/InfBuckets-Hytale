@@ -27,7 +27,7 @@ public class InfBucketCommand extends AbstractPlayerCommand {
     @Override
     protected void execute(CommandContext context, Store<EntityStore> store, Ref<EntityStore> playerRef,
                            PlayerRef playerRefComponent, World world) {
-        context.sendMessage(Message.raw("Usage: /infb give <player> <water|lava|poison|slime|tar>").color("#FFD700"));
+        context.sendMessage(Message.raw("Usage: /infb give <player> <water>").color("#FFD700"));
     }
 
     private class GiveSubCommand extends AbstractPlayerCommand {
@@ -49,26 +49,23 @@ public class InfBucketCommand extends AbstractPlayerCommand {
             Player targetPlayer = findPlayerByName(store, targetPlayerName);
             if (targetPlayer == null) return;
 
-            // Map the fluid type to the State keys found in standard Hytale bucket assets
+            // Map the fluid type to the State keys - only water is confirmed to work
             String stateName;
             switch (type) {
                 case "water": stateName = "Filled_Water"; break;
-                case "lava": stateName = "Filled_Lava"; break;
-                case "poison": stateName = "Filled_Poison"; break;
-                case "slime": stateName = "Filled_Slime"; break;
-                case "tar": stateName = "Filled_Tar"; break;
-                default: return;
+                // Add more types here as you discover valid state names in Hytale
+                default:
+                    context.sendMessage(Message.raw("Unknown bucket type: " + type).color("#FF5555"));
+                    return;
             }
 
             BsonDocument metadata = new BsonDocument();
             metadata.put("infinite", new BsonString("true"));
             metadata.put("infbucket_type", new BsonString(type));
-            // This 'state' key is critical; it tells the engine which variant to render
-            metadata.put("state", new BsonString(stateName));
 
             // Use the base ID found in your screenshots
             String itemId = "Container_Bucket";
-            ItemStack infiniteBucket = new ItemStack(itemId, 1, metadata);
+            ItemStack infiniteBucket = new ItemStack(itemId, 1, metadata).withState(stateName);
 
             try {
                 targetPlayer.getInventory().getCombinedHotbarFirst().addItemStack(infiniteBucket);

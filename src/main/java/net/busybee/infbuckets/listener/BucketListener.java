@@ -35,10 +35,19 @@ public class BucketListener {
 
         try {
             BsonDocument metadata = heldItem.getMetadata();
+            String bucketType = metadata.getString("infbucket_type").getValue();
 
-            // Re-create the item with the correct Base ID and the original Metadata (state)
+            // Map the fluid type back to the state name
+            String stateName;
+            switch (bucketType) {
+                case "water": stateName = "Filled_Water"; break;
+                // Add more types here as valid state names are discovered
+                default: stateName = "Filled_Water"; break;
+            }
+
+            // Re-create the item with the correct Base ID, metadata, and state
             String itemId = "Container_Bucket";
-            ItemStack restoredBucket = new ItemStack(itemId, 1, metadata);
+            ItemStack restoredBucket = new ItemStack(itemId, 1, metadata).withState(stateName);
 
             // Re-apply the bucket to the slot to prevent it from turning into an empty version
             short bucketSlot = findBucketSlot(player);

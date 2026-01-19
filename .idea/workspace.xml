@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b7dbede-3246-4cd0-a283-dea84a74484b" name="Changes" comment="Update plugin to refine handling of infinite water buckets and adjust bucket state logic">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/InfBucketsPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/InfBucketsPlugin.java" afterDir="false" />
+    <list default="true" id="4b7dbede-3246-4cd0-a283-dea84a74484b" name="Changes" comment="Refine plugin logic: improve infinite bucket handling, adjust state mappings, and enhance command usage.">
       <change beforePath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/commands/InfBucketCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/commands/InfBucketCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/listener/BucketListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/listener/BucketListener.java" afterDir="false" />
     </list>
@@ -42,7 +40,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/commands/InfBucketCommand.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/commands/InfBucketCommand.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -59,40 +57,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Maven.InfiniteBuckets [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/troym/OneDrive/Desktop/InfBuckets/src/main/java/net/busybee/infbuckets/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.3726647&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Maven.InfiniteBuckets [clean,install].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/troym/OneDrive/Desktop/InfBuckets/src/main/java/net/busybee/infbuckets/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.3726647",
+    "settings.editor.selected.configurable": "Errors",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecapSpentCounter">
     <option name="endsOfQuotaMs" value="1770519964724" />
-    <option name="spentUsd" value="0.0200193" />
+    <option name="spentUsd" value="0.02487755" />
   </component>
   <component name="RecapUselessUpdatesCounter">
-    <option name="suspendCountdown" value="6" />
+    <option name="suspendCountdown" value="5" />
   </component>
   <component name="RunManager">
     <configuration name="InfiniteBuckets [clean,install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
@@ -151,7 +149,7 @@
       <workItem from="1768711659908" duration="182000" />
       <workItem from="1768788545922" duration="178000" />
       <workItem from="1768789388036" duration="4000" />
-      <workItem from="1768790712015" duration="1379000" />
+      <workItem from="1768790712015" duration="2639000" />
     </task>
     <task id="LOCAL-00001" summary="Init Push">
       <option name="closed" value="true" />
@@ -177,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768711741592</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Refine plugin logic: improve infinite bucket handling, adjust state mappings, and enhance command usage.">
+      <option name="closed" value="true" />
+      <created>1768792532137</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1768792532137</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +193,7 @@
     <MESSAGE value="Init Push" />
     <MESSAGE value="Update plugin to focus on infinite water buckets only" />
     <MESSAGE value="Update plugin to refine handling of infinite water buckets and adjust bucket state logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update plugin to refine handling of infinite water buckets and adjust bucket state logic" />
+    <MESSAGE value="Refine plugin logic: improve infinite bucket handling, adjust state mappings, and enhance command usage." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refine plugin logic: improve infinite bucket handling, adjust state mappings, and enhance command usage." />
   </component>
 </project>
