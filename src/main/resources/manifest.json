@@ -3,7 +3,7 @@
   "Name": "InfiniteBuckets",
   "Version": "1.0.0",
   "Main": "net.busybee.infbuckets.InfBucketsPlugin",
-  "Description": "Adds infinite water and lava buckets for server administrators and VIPs",
+  "Description": "Adds infinite water and lava buckets for server.",
   "ServerVersion": "*",
   "Authors": [
     {

@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b7dbede-3246-4cd0-a283-dea84a74484b" name="Changes" comment="Refine plugin logic: improve infinite bucket handling, adjust state mappings, and enhance command usage.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/commands/InfBucketCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/commands/InfBucketCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/listener/BucketListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/listener/BucketListener.java" afterDir="false" />
-    </list>
+    <list default="true" id="4b7dbede-3246-4cd0-a283-dea84a74484b" name="Changes" comment="Refine bucket handling: map state names dynamically, restrict types to water, and enhance metadata logic." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -149,7 +146,7 @@
       <workItem from="1768711659908" duration="182000" />
       <workItem from="1768788545922" duration="178000" />
       <workItem from="1768789388036" duration="4000" />
-      <workItem from="1768790712015" duration="2639000" />
+      <workItem from="1768790712015" duration="3296000" />
     </task>
     <task id="LOCAL-00001" summary="Init Push">
       <option name="closed" value="true" />
@@ -183,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768792532137</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Refine bucket handling: map state names dynamically, restrict types to water, and enhance metadata logic.">
+      <option name="closed" value="true" />
+      <created>1768793772751</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1768793772751</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +199,7 @@
     <MESSAGE value="Update plugin to focus on infinite water buckets only" />
     <MESSAGE value="Update plugin to refine handling of infinite water buckets and adjust bucket state logic" />
     <MESSAGE value="Refine plugin logic: improve infinite bucket handling, adjust state mappings, and enhance command usage." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refine plugin logic: improve infinite bucket handling, adjust state mappings, and enhance command usage." />
+    <MESSAGE value="Refine bucket handling: map state names dynamically, restrict types to water, and enhance metadata logic." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refine bucket handling: map state names dynamically, restrict types to water, and enhance metadata logic." />
   </component>
 </project>
