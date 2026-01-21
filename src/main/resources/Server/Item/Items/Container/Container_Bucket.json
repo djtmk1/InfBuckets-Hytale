@@ -39,14 +39,6 @@
       "Variant": true,
       "Interactions": { "Secondary": { "Interactions": [ { "Type": "PlaceFluid", "RemoveItemInHand": false, "Next": null, "FluidToPlace": "Lava_Source" } ] } }
     },
-    "Filled_Milk": {
-      "Variant": true,
-      "InteractionVars": { "DurabilityModify": { "Interactions": [ { "Type": "ModifyInventory", "AdjustHeldItemDurability": 0 } ] } }
-    },
-    "Filled_Mosshorn_Milk": {
-      "Variant": true,
-      "InteractionVars": { "DurabilityModify": { "Interactions": [ { "Type": "ModifyInventory", "AdjustHeldItemDurability": 0 } ] } }
-    },
     "Filled_Poison": {
       "Variant": true,
       "Interactions": { "Secondary": { "Interactions": [ { "Type": "PlaceFluid", "RemoveItemInHand": false, "Next": null, "FluidToPlace": "Poison_Source" } ] } }

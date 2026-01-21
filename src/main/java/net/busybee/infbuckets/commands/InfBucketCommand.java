@@ -25,18 +25,21 @@ public class InfBucketCommand extends AbstractPlayerCommand {
         super("infb", "Infinite bucket command");
         requirePermission("infbuckets.give");
         addSubCommand(new GiveSubCommand());
+        addSubCommand(new HelpSubCommand());
     }
 
     @Override
     protected void execute(CommandContext context, Store<EntityStore> store, Ref<EntityStore> playerRef,
                            PlayerRef playerRefComponent, World world) {
-        context.sendMessage(Message.raw("Usage: /infb give <player> <type>").color("#FFD700"));
+        context.sendMessage(Message.raw("=== InfiniteBuckets Help ===").color("#FFD700"));
+        context.sendMessage(Message.raw("/infb give <player> <type> - Give an infinite bucket").color("#AAAAAA"));
+        context.sendMessage(Message.raw("/infb help - Show available bucket types").color("#AAAAAA"));
     }
 
     private class GiveSubCommand extends AbstractPlayerCommand {
         private final RequiredArg<String> targetPlayerArg;
         private final RequiredArg<String> bucketTypeArg;
-        private final List<String> allowedTypes = Arrays.asList("water", "lava", "poison", "slime", "red_slime", "tar", "milk", "mosshorn_milk");
+        private final List<String> allowedTypes = Arrays.asList("water", "lava", "poison", "slime", "red_slime", "tar");
 
         public GiveSubCommand() {
             super("give", "Give an infinite bucket");
@@ -99,6 +102,26 @@ public class InfBucketCommand extends AbstractPlayerCommand {
                 }
             });
             return foundPlayer[0];
+        }
+    }
+
+    private class HelpSubCommand extends AbstractPlayerCommand {
+        private final List<String> bucketTypes = Arrays.asList("water", "lava", "poison", "slime", "red_slime", "tar");
+
+        public HelpSubCommand() {
+            super("help", "Show help and available bucket types");
+        }
+
+        @Override
+        protected void execute(CommandContext context, Store<EntityStore> store, Ref<EntityStore> senderRef,
+                               PlayerRef senderPlayerRef, World world) {
+            context.sendMessage(Message.raw("=== InfiniteBuckets Help ===").color("#FFD700"));
+            context.sendMessage(Message.raw("Usage: /infb give <player> <type>").color("#AAAAAA"));
+            context.sendMessage(Message.raw("").color("#FFFFFF"));
+            context.sendMessage(Message.raw("Available Bucket Types:").color("#55FF55"));
+            for (String type : bucketTypes) {
+                context.sendMessage(Message.raw("  - " + type).color("#FFFFFF"));
+            }
         }
     }
 }
