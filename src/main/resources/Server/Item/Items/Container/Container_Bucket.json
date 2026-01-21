@@ -1,0 +1,79 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Container_Bucket.name",
+    "Description": "server.items.Container_Bucket.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Container_Bucket.png",
+  "ItemLevel": 5,
+  "MaxStack": 1,
+  "Categories": [ "Furniture.Containers" ],
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "Condition",
+          "Crouching": false,
+          "Next": {
+            "Type": "RefillContainer",
+            "Effects": { "ClearSoundEventOnFinish": true, "LocalSoundEventId": "SFX_Water_MoveIn" },
+            "States": {
+              "Filled_Water": { "AllowedFluids": [ "Water_Source" ], "TransformFluid": "Empty" },
+              "Filled_Lava": { "AllowedFluids": [ "Lava_Source" ], "TransformFluid": "Empty" },
+              "Filled_Poison": { "AllowedFluids": [ "Poison_Source" ], "TransformFluid": "Empty" },
+              "Filled_Slime": { "AllowedFluids": [ "Slime_Source" ], "TransformFluid": "Empty" },
+              "Filled_Red_Slime": { "AllowedFluids": [ "Slime_Red_Source" ], "TransformFluid": "Empty" },
+              "Filled_Tar": { "AllowedFluids": [ "Tar_Source" ], "TransformFluid": "Empty" }
+            },
+            "Failed": "Bucket_Milk_Cow"
+          }
+        }
+      ]
+    }
+  },
+  "State": {
+    "Filled_Water": {
+      "Variant": true,
+      "Interactions": { "Secondary": { "Interactions": [ { "Type": "PlaceFluid", "RemoveItemInHand": false, "Next": null, "FluidToPlace": "Water_Source" } ] } }
+    },
+    "Filled_Lava": {
+      "Variant": true,
+      "Interactions": { "Secondary": { "Interactions": [ { "Type": "PlaceFluid", "RemoveItemInHand": false, "Next": null, "FluidToPlace": "Lava_Source" } ] } }
+    },
+    "Filled_Milk": {
+      "Variant": true,
+      "InteractionVars": { "DurabilityModify": { "Interactions": [ { "Type": "ModifyInventory", "AdjustHeldItemDurability": 0 } ] } }
+    },
+    "Filled_Mosshorn_Milk": {
+      "Variant": true,
+      "InteractionVars": { "DurabilityModify": { "Interactions": [ { "Type": "ModifyInventory", "AdjustHeldItemDurability": 0 } ] } }
+    },
+    "Filled_Poison": {
+      "Variant": true,
+      "Interactions": { "Secondary": { "Interactions": [ { "Type": "PlaceFluid", "RemoveItemInHand": false, "Next": null, "FluidToPlace": "Poison_Source" } ] } }
+    },
+    "Filled_Slime": {
+      "Variant": true,
+      "Interactions": { "Secondary": { "Interactions": [ { "Type": "PlaceFluid", "RemoveItemInHand": false, "Next": null, "FluidToPlace": "Slime_Source" } ] } }
+    },
+    "Filled_Red_Slime": {
+      "Variant": true,
+      "Interactions": { "Secondary": { "Interactions": [ { "Type": "PlaceFluid", "RemoveItemInHand": false, "Next": null, "FluidToPlace": "Slime_Red_Source" } ] } }
+    },
+    "Filled_Tar": {
+      "Variant": true,
+      "Interactions": { "Secondary": { "Interactions": [ { "Type": "PlaceFluid", "RemoveItemInHand": false, "Next": null, "FluidToPlace": "Tar_Source" } ] } }
+    }
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Decorative_Sets/Village/Bucket.blockymodel",
+    "CustomModelTexture": [ { "Weight": 1, "Texture": "Blocks/Decorative_Sets/Village/Bucket_Texture.png" } ],
+    "CustomModelScale": 0.75,
+    "HitboxType": "Plant_Full",
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood"
+  },
+  "Tags": { "Type": [ "Container" ] }
+}

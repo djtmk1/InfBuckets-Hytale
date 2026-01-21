@@ -32,7 +32,7 @@ public class BucketListener {
         try {
             BsonDocument metadata = heldItem.getMetadata();
             String bucketType = metadata.getString("infbucket_type").getValue();
-            String stateName = "Filled_Water";
+            String stateName = "Filled_" + bucketType;
             String itemId = "Container_Bucket";
             ItemStack restoredBucket = new ItemStack(itemId, 1, metadata).withState(stateName);
 

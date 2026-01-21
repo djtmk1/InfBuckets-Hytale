@@ -1,14 +1,20 @@
 {
   "Group": "BusyBee",
-  "Name": "InfiniteBuckets",
-  "Version": "1.0.0",
-  "Main": "net.busybee.infbuckets.InfBucketsPlugin",
-  "Description": "Adds infinite water buckets. Water buckets never run out when placing water.",
-  "ServerVersion": "*",
+  "Name": "InfBucket",
+  "Version": "2026.1.1",
+  "Description": "Infinite buckets for all liquids. Water, Lava, and Milk never run out.",
   "Authors": [
     {
-      "name": "BusyBee Development"
+      "Name": "djtmk",
+      "Email": "",
+      "Url": ""
     }
   ],
-  "Dependencies": {}
+  "Website": "https://www.curseforge.com/hytale/mods/infinitebuckets",
+  "ServerVersion": "*",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": true,
+  "Main": "net.busybee.infbuckets.InfBucketsPlugin"
 }

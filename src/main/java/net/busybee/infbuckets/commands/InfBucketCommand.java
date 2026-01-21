@@ -16,6 +16,9 @@ import net.busybee.infbuckets.InfBucketsPlugin;
 import org.bson.BsonDocument;
 import org.bson.BsonString;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class InfBucketCommand extends AbstractPlayerCommand {
 
     public InfBucketCommand(InfBucketsPlugin plugin) {
@@ -27,12 +30,13 @@ public class InfBucketCommand extends AbstractPlayerCommand {
     @Override
     protected void execute(CommandContext context, Store<EntityStore> store, Ref<EntityStore> playerRef,
                            PlayerRef playerRefComponent, World world) {
-        context.sendMessage(Message.raw("Usage: /infb give <player> water").color("#FFD700"));
+        context.sendMessage(Message.raw("Usage: /infb give <player> <type>").color("#FFD700"));
     }
 
     private class GiveSubCommand extends AbstractPlayerCommand {
         private final RequiredArg<String> targetPlayerArg;
         private final RequiredArg<String> bucketTypeArg;
+        private final List<String> allowedTypes = Arrays.asList("water", "lava", "poison", "slime", "red_slime", "tar", "milk", "mosshorn_milk");
 
         public GiveSubCommand() {
             super("give", "Give an infinite bucket");
@@ -47,18 +51,21 @@ public class InfBucketCommand extends AbstractPlayerCommand {
             String type = context.get(bucketTypeArg).toLowerCase();
 
             Player targetPlayer = findPlayerByName(store, targetPlayerName);
-            if (targetPlayer == null) return;
-
-            if (!type.equals("water")) {
-                context.sendMessage(Message.raw("Unknown bucket type: " + type + ". Only 'water' is supported.").color("#FF5555"));
+            if (targetPlayer == null) {
+                context.sendMessage(Message.raw("Player not found: " + targetPlayerName).color("#FF5555"));
                 return;
             }
 
-            String stateName = "Filled_Water";
+            if (!allowedTypes.contains(type)) {
+                context.sendMessage(Message.raw("Unknown bucket type: " + type + ". Allowed: " + String.join(", ", allowedTypes)).color("#FF5555"));
+                return;
+            }
+
+            String stateName = "Filled_" + capitalize(type);
 
             BsonDocument metadata = new BsonDocument();
             metadata.put("infinite", new BsonString("true"));
-            metadata.put("infbucket_type", new BsonString(type));
+            metadata.put("infbucket_type", new BsonString(capitalize(type)));
             String itemId = "Container_Bucket";
             ItemStack infiniteBucket = new ItemStack(itemId, 1, metadata).withState(stateName);
 
@@ -68,6 +75,19 @@ public class InfBucketCommand extends AbstractPlayerCommand {
             } catch (Exception e) {
                 context.sendMessage(Message.raw("Error: " + e.getMessage()).color("#FF5555"));
             }
+        }
+
+        private String capitalize(String str) {
+            if (str == null || str.isEmpty()) return str;
+            if (str.contains("_")) {
+                String[] parts = str.split("_");
+                StringBuilder sb = new StringBuilder();
+                for (String part : parts) {
+                    sb.append(Character.toUpperCase(part.charAt(0))).append(part.substring(1)).append("_");
+                }
+                return sb.substring(0, sb.length() - 1);
+            }
+            return Character.toUpperCase(str.charAt(0)) + str.substring(1);
         }
 
         private Player findPlayerByName(Store<EntityStore> store, String name) {

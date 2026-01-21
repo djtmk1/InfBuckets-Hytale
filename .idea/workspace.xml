@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b7dbede-3246-4cd0-a283-dea84a74484b" name="Changes" comment="Restrict bucket types to water, simplify state mappings, and refine bucket handling logic.">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/commands/InfBucketCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/commands/InfBucketCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/listener/BucketListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/listener/BucketListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="21" />
+    <option name="cachedIndexableFilesCount" value="16" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -54,7 +59,6 @@
 }</component>
   <component name="ProjectId" id="38PPIOEsxPF37V3W08x5zOdkL41" />
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
@@ -66,6 +70,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
@@ -151,6 +156,8 @@
       <workItem from="1768789388036" duration="4000" />
       <workItem from="1768790712015" duration="5998000" />
       <workItem from="1768798573869" duration="426000" />
+      <workItem from="1768966991739" duration="722000" />
+      <workItem from="1768967720818" duration="1732000" />
     </task>
     <task id="LOCAL-00001" summary="Init Push">
       <option name="closed" value="true" />
