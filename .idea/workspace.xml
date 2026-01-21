@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b7dbede-3246-4cd0-a283-dea84a74484b" name="Changes" comment="Restrict bucket types to water, simplify state mappings, and refine bucket handling logic.">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="4b7dbede-3246-4cd0-a283-dea84a74484b" name="Changes" comment="Add support for multiple bucket types, dynamic state mappings, and enhanced metadata handling.">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/commands/InfBucketCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/commands/InfBucketCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/listener/BucketListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/listener/BucketListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Server/Item/Items/Container/Container_Bucket.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Server/Item/Items/Container/Container_Bucket.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +153,7 @@
       <workItem from="1768790712015" duration="5998000" />
       <workItem from="1768798573869" duration="426000" />
       <workItem from="1768966991739" duration="722000" />
-      <workItem from="1768967720818" duration="1732000" />
+      <workItem from="1768967720818" duration="2881000" />
     </task>
     <task id="LOCAL-00001" summary="Init Push">
       <option name="closed" value="true" />
@@ -215,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768797326209</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add support for multiple bucket types, dynamic state mappings, and enhanced metadata handling.">
+      <option name="closed" value="true" />
+      <created>1768969479549</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1768969479549</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,6 +233,7 @@
     <MESSAGE value="Refine bucket handling: map state names dynamically, restrict types to water, and enhance metadata logic." />
     <MESSAGE value="Update workspace and manifest: refine bucket handling logic and update description." />
     <MESSAGE value="Restrict bucket types to water, simplify state mappings, and refine bucket handling logic." />
-    <option name="LAST_COMMIT_MESSAGE" value="Restrict bucket types to water, simplify state mappings, and refine bucket handling logic." />
+    <MESSAGE value="Add support for multiple bucket types, dynamic state mappings, and enhanced metadata handling." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add support for multiple bucket types, dynamic state mappings, and enhanced metadata handling." />
   </component>
 </project>
