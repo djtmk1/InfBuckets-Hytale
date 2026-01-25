@@ -1,7 +1,7 @@
 {
   "Group": "BusyBee",
   "Name": "InfBucket",
-  "Version": "2026.1.1",
+  "Version": "2026.1.2",
   "Description": "Infinite buckets for all liquids. Water, Lava, and Milk never run out.",
   "Authors": [
     {
@@ -15,6 +15,5 @@
   "Dependencies": {},
   "OptionalDependencies": {},
   "DisabledByDefault": false,
-  "IncludesAssetPack": true,
-  "Main": "net.busybee.infbuckets.InfBucketsPlugin"
+  "IncludesAssetPack": true
 }

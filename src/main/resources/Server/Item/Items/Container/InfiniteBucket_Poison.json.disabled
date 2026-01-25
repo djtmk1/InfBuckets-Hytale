@@ -1,0 +1,80 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.InfiniteBucket_Poison.name",
+    "Description": "server.items.InfiniteBucket_Poison.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Container_Bucket.png",
+  "ItemLevel": 15,
+  "MaxStack": 1,
+  "Categories": [ "Furniture.Containers" ],
+  "Recipe": {
+    "TimeSeconds": 6.0,
+    "Input": [
+      {
+        "ItemId": "InfiniteBucket_Lava",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Material_Gold_Ingot",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Material_Copper_Ingot",
+        "Quantity": 5
+      },
+      {
+        "ItemId": "Material_Bone",
+        "Quantity": 6
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Workbench_Advanced",
+        "Type": "Crafting",
+        "Categories": ["Workbench_Advanced_Survival"]
+      }
+    ]
+  },
+  "DefaultState": "Filled_Poison",
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "Condition",
+          "Crouching": false,
+          "Next": {
+            "Type": "RefillContainer",
+            "Effects": { "ClearSoundEventOnFinish": true, "LocalSoundEventId": "SFX_Water_MoveIn" },
+            "States": {
+              "Empty": { "AllowedFluids": [ "Poison_Source" ], "TransformFluid": "Filled_Poison" },
+              "Filled_Poison": { "AllowedFluids": [ "Poison_Source" ], "TransformFluid": "Filled_Poison" }
+            },
+            "Failed": "Bucket_Milk_Cow"
+          }
+        }
+      ]
+    }
+  },
+  "State": {
+    "Empty": {
+      "Variant": true,
+      "Interactions": { "Secondary": { "Interactions": [ { "Type": "RefillContainer", "Effects": { "ClearSoundEventOnFinish": true, "LocalSoundEventId": "SFX_Water_MoveIn" }, "States": { "Empty": { "AllowedFluids": [ "Poison_Source" ], "TransformFluid": "Filled_Poison" } } } ] } }
+    },
+    "Filled_Poison": {
+      "Variant": true,
+      "Interactions": { "Secondary": { "Interactions": [ { "Type": "PlaceFluid", "RemoveItemInHand": false, "Next": null, "FluidToPlace": "Poison_Source" } ] } }
+    }
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Decorative_Sets/Village/Bucket.blockymodel",
+    "CustomModelTexture": [ { "Weight": 1, "Texture": "Blocks/Decorative_Sets/Village/Bucket_Texture.png" } ],
+    "CustomModelScale": 0.75,
+    "HitboxType": "Plant_Full",
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood"
+  },
+  "Tags": { "Type": [ "Container", "Infinite" ] }
+}

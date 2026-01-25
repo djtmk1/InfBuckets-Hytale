@@ -1,0 +1,80 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.InfiniteBucket_Red_Slime.name",
+    "Description": "server.items.InfiniteBucket_Red_Slime.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Container_Bucket.png",
+  "ItemLevel": 25,
+  "MaxStack": 1,
+  "Categories": [ "Furniture.Containers" ],
+  "Recipe": {
+    "TimeSeconds": 8.0,
+    "Input": [
+      {
+        "ItemId": "InfiniteBucket_Slime",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Material_Titanium_Ingot",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Material_Gold_Ingot",
+        "Quantity": 6
+      },
+      {
+        "ItemId": "Material_Ruby",
+        "Quantity": 3
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Forge",
+        "Type": "Crafting",
+        "Categories": ["Forge_Advanced"]
+      }
+    ]
+  },
+  "DefaultState": "Filled_Red_Slime",
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "Condition",
+          "Crouching": false,
+          "Next": {
+            "Type": "RefillContainer",
+            "Effects": { "ClearSoundEventOnFinish": true, "LocalSoundEventId": "SFX_Water_MoveIn" },
+            "States": {
+              "Empty": { "AllowedFluids": [ "Slime_Red_Source" ], "TransformFluid": "Filled_Red_Slime" },
+              "Filled_Red_Slime": { "AllowedFluids": [ "Slime_Red_Source" ], "TransformFluid": "Filled_Red_Slime" }
+            },
+            "Failed": "Bucket_Milk_Cow"
+          }
+        }
+      ]
+    }
+  },
+  "State": {
+    "Empty": {
+      "Variant": true,
+      "Interactions": { "Secondary": { "Interactions": [ { "Type": "RefillContainer", "Effects": { "ClearSoundEventOnFinish": true, "LocalSoundEventId": "SFX_Water_MoveIn" }, "States": { "Empty": { "AllowedFluids": [ "Slime_Red_Source" ], "TransformFluid": "Filled_Red_Slime" } } } ] } }
+    },
+    "Filled_Red_Slime": {
+      "Variant": true,
+      "Interactions": { "Secondary": { "Interactions": [ { "Type": "PlaceFluid", "RemoveItemInHand": false, "Next": null, "FluidToPlace": "Slime_Red_Source" } ] } }
+    }
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Decorative_Sets/Village/Bucket.blockymodel",
+    "CustomModelTexture": [ { "Weight": 1, "Texture": "Blocks/Decorative_Sets/Village/Bucket_Texture.png" } ],
+    "CustomModelScale": 0.75,
+    "HitboxType": "Plant_Full",
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood"
+  },
+  "Tags": { "Type": [ "Container", "Infinite" ] }
+}
