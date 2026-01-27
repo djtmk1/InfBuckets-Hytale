@@ -1,0 +1,20 @@
+{
+  "Group": "InfBuckets",
+  "Name": "BusyBee",
+  "Version": "2026.1.2",
+  "Description": "",
+  "Authors": [
+    {
+      "Name": "djtmk",
+      "Email": "",
+      "Url": ""
+    }
+  ],
+  "Website": "",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "LoadBefore": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": false,
+  "SubPlugins": []
+}

@@ -1,0 +1,307 @@
+{
+  "TranslationProperties": {
+    "Name": "Infinite Bucket",
+    "Description": "server.items.Container_Bucket.description"
+  },
+  "Icon": "Icons/ItemsGenerated/Container_Bucket.png",
+  "ItemLevel": 15,
+  "MaxStack": 1,
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      0.0,
+      121.0,
+      25.0
+    ],
+    "Translation": [
+      -3.0,
+      -18.0
+    ]
+  },
+  "Categories": [
+    "Furniture.Containers"
+  ],
+  "Recipe": {
+    "TimeSeconds": 5,
+    "KnowledgeRequired": false,
+    "BenchRequirement": [
+      {
+        "Id": "Farmingbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Buckets"
+        ],
+        "RequiredTierLevel": 3
+      }
+    ],
+    "Input": [
+      {
+        "ResourceTypeId": "",
+        "Quantity": 1,
+        "ItemId": "InfWater"
+      },
+      {
+        "ResourceTypeId": "",
+        "Quantity": 1,
+        "ItemId": "InfLava"
+      },
+      {
+        "ItemId": "Ingredient_Void_Essence",
+        "Quantity": 5,
+        "ResourceTypeId": ""
+      }
+    ]
+  },
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "RefillContainer",
+          "Effects": {
+            "ClearSoundEventOnFinish": true,
+            "LocalSoundEventId": "SFX_Water_MoveIn"
+          },
+          "States": {
+            "Infinite_Filled_Water": {
+              "AllowedFluids": [
+                "Water_Source"
+              ],
+              "TransformFluid": "Water_Source"
+            },
+            "Infinite_Filled_Lava": {
+              "AllowedFluids": [
+                "Lava_Source"
+              ],
+              "TransformFluid": "Lava_Source"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "State": {
+    "Infinite_Filled_Water": {
+      "Variant": true,
+      "TranslationProperties": {
+        "Name": "server.items.Multi_Infinite_Bucket_Water.name",
+        "Description": "server.items.Multi_Infinite_Bucket_Water.description"
+      },
+      "Icon": "Icons/ItemsGenerated/Container_Bucket_Water.png",
+      "IconProperties": {
+        "Scale": 0.58823,
+        "Rotation": [
+          0.0,
+          121.0,
+          25.0
+        ],
+        "Translation": [
+          -3.0,
+          -18.0
+        ]
+      },
+      "Recipe": null,
+      "Interactions": {
+        "Secondary": {
+          "Interactions": [
+            {
+              "Type": "Condition",
+              "Crouching": true,
+              "Next": {
+                "Type": "RefillContainer",
+                "Effects": {
+                  "ClearSoundEventOnFinish": true,
+                  "LocalSoundEventId": "SFX_Water_MoveIn"
+                },
+                "States": {
+                  "Infinite_Filled_Water": {
+                    "AllowedFluids": [
+                      "Water_Source"
+                    ],
+                    "TransformFluid": "Water_Source"
+                  },
+                  "Infinite_Filled_Lava": {
+                    "AllowedFluids": [
+                      "Lava_Source"
+                    ],
+                    "TransformFluid": "Lava_Source"
+                  }
+                }
+              },
+              "Failed": {
+                "Type": "PlaceFluid",
+                "RemoveItemInHand": false,
+                "FluidToPlace": "Water_Source",
+                "Effects": {
+                  "ClearSoundEventOnFinish": true,
+                  "LocalSoundEventId": "SFX_WATER_MoveOut"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "Consumable": false,
+      "MaxDurability": 1,
+      "MaxStack": 1,
+      "BlockType": {
+        "Material": "Empty",
+        "DrawType": "Model",
+        "Opacity": "Transparent",
+        "CustomModel": "Blocks/Decorative_Sets/Village/Bucket_Full.blockymodel",
+        "CustomModelTexture": [
+          {
+            "Weight": 1,
+            "Texture": "Blocks/Decorative_Sets/Village/Bucket_Texture_Water.png"
+          }
+        ],
+        "CustomModelScale": 0.75,
+        "RandomRotation": "YawStep1",
+        "Gathering": {
+          "Soft": {
+            "IsWeaponBreakable": true
+          }
+        },
+        "HitboxType": "Plant_Full",
+        "BlockParticleSetId": "Wood",
+        "BlockSoundSetId": "Wood",
+        "Support": {
+          "Down": [
+            {
+              "FaceType": "Full"
+            }
+          ]
+        }
+      }
+    },
+    "Infinite_Filled_Lava": {
+      "Variant": true,
+      "TranslationProperties": {
+        "Name": "server.items.Multi_Infinite_Bucket_Lava.name",
+        "Description": "server.items.Multi_Infinite_Bucket_Lava.description"
+      },
+      "Icon": "Icons/ItemsGenerated/Container_Bucket_Water.png",
+      "IconProperties": {
+        "Scale": 0.58823,
+        "Rotation": [
+          0.0,
+          121.0,
+          25.0
+        ],
+        "Translation": [
+          -3.0,
+          -18.0
+        ]
+      },
+      "Recipe": null,
+      "Interactions": {
+        "Secondary": {
+          "Interactions": [
+            {
+              "Type": "Condition",
+              "Crouching": true,
+              "Next": {
+                "Type": "RefillContainer",
+                "Effects": {
+                  "ClearSoundEventOnFinish": true,
+                  "LocalSoundEventId": "SFX_Water_MoveIn"
+                },
+                "States": {
+                  "Infinite_Filled_Water": {
+                    "AllowedFluids": [
+                      "Water_Source"
+                    ],
+                    "TransformFluid": "Water_Source"
+                  },
+                  "Infinite_Filled_Lava": {
+                    "AllowedFluids": [
+                      "Lava_Source"
+                    ],
+                    "TransformFluid": "Lava_Source"
+                  }
+                }
+              },
+              "Failed": {
+                "Type": "PlaceFluid",
+                "RemoveItemInHand": false,
+                "FluidToPlace": "Lava_Source",
+                "Effects": {
+                  "ClearSoundEventOnFinish": true,
+                  "LocalSoundEventId": "SFX_Env_Emit_Fluid_Lava"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "Consumable": false,
+      "MaxDurability": 1,
+      "MaxStack": 1,
+      "BlockType": {
+        "Material": "Empty",
+        "DrawType": "Model",
+        "Opacity": "Transparent",
+        "CustomModel": "Blocks/Decorative_Sets/Village/Bucket_Full.blockymodel",
+        "CustomModelTexture": [
+          {
+            "Weight": 1,
+            "Texture": "Blocks/Decorative_Sets/Village/Bucket_Texture_Water.png"
+          }
+        ],
+        "CustomModelScale": 0.75,
+        "RandomRotation": "YawStep1",
+        "Gathering": {
+          "Soft": {
+            "IsWeaponBreakable": true
+          }
+        },
+        "HitboxType": "Plant_Full",
+        "BlockParticleSetId": "Wood",
+        "BlockSoundSetId": "Wood",
+        "Support": {
+          "Down": [
+            {
+              "FaceType": "Full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Decorative_Sets/Village/Bucket.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Weight": 1,
+        "Texture": "Blocks/Decorative_Sets/Village/Bucket_Texture.png"
+      }
+    ],
+    "CustomModelScale": 0.75,
+    "RandomRotation": "YawStep1",
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": true
+      }
+    },
+    "HitboxType": "Plant_Full",
+    "BlockParticleSetId": "Wood",
+    "BlockSoundSetId": "Wood",
+    "ParticleColor": "#63412c",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    }
+  },
+  "PlayerAnimationsId": "Item",
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "Tags": {
+    "Type": [
+      "Container"
+    ]
+  }
+}

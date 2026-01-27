@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="HytaleServer">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/HytaleServer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

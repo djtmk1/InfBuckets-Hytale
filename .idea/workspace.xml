@@ -4,15 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b7dbede-3246-4cd0-a283-dea84a74484b" name="Changes" comment="Add support for multiple bucket types, dynamic state mappings, and enhanced metadata handling.">
+    <list default="true" id="4b7dbede-3246-4cd0-a283-dea84a74484b" name="Changes" comment="Remove InfiniteBuckets plugin files, logic, and resources.">
+      <change afterPath="$PROJECT_DIR$/Server/Item/Items/InfBucket.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/InfBucketsPlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/commands/InfBucketCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/busybee/infbuckets/listener/BucketListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Server/Item/Items/Deco/Deco_Bucket.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Server/Item/Items/Container/Container_Bucket.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Server/Item/Items/Container/InfiniteBucket_Lava.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Server/Item/Items/Container/InfiniteBucket_Poison.json.disabled" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Server/Item/Items/Container/InfiniteBucket_Red_Slime.json.disabled" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Server/Item/Items/Container/InfiniteBucket_Slime.json.disabled" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Server/Item/Items/Container/InfiniteBucket_Tar.json.disabled" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Server/Item/Items/Container/InfiniteBucket_Water.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Server/Texture/Blocks/InfiniteBuckets/Bucket_Texture_Lava.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/manifest.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +28,7 @@
     <execution />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="23" />
+    <option name="cachedIndexableFilesCount" value="26" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -167,7 +172,10 @@
       <workItem from="1769349175618" duration="88000" />
       <workItem from="1769349284135" duration="8417000" />
       <workItem from="1769358630170" duration="2772000" />
-      <workItem from="1769362153102" duration="1390000" />
+      <workItem from="1769362153102" duration="2488000" />
+      <workItem from="1769364795908" duration="2244000" />
+      <workItem from="1769486847440" duration="2000" />
+      <workItem from="1769488497685" duration="14000" />
     </task>
     <task id="LOCAL-00001" summary="Init Push">
       <option name="closed" value="true" />
@@ -233,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768969479549</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Remove InfiniteBuckets plugin files, logic, and resources.">
+      <option name="closed" value="true" />
+      <created>1769363603548</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1769363603548</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +264,7 @@
     <MESSAGE value="Update workspace and manifest: refine bucket handling logic and update description." />
     <MESSAGE value="Restrict bucket types to water, simplify state mappings, and refine bucket handling logic." />
     <MESSAGE value="Add support for multiple bucket types, dynamic state mappings, and enhanced metadata handling." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add support for multiple bucket types, dynamic state mappings, and enhanced metadata handling." />
+    <MESSAGE value="Remove InfiniteBuckets plugin files, logic, and resources." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove InfiniteBuckets plugin files, logic, and resources." />
   </component>
 </project>
